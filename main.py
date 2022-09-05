@@ -1,21 +1,22 @@
 def hanoi(disc_count, rod_a, rod_b, rod_c):
-    if disc_count == 1:
-        print(f"Move a disk from rod {rod_a} to rod {rod_c}")
+    if disc_count <= 0:
+        print("Enter valid disc count.")
+    elif disc_count == 1:
+        print(f"Move a disk from rod {rod_a} to rod {rod_c}.")
         return
-    if disc_count == 2:
-        print(f"Move a disk from rod {rod_a} to rod {rod_b}")
-        print(f"Move a disk from rod {rod_a} to rod {rod_c}")
-        print(f"Move a disk from rod {rod_b} to rod {rod_c}")
+    elif disc_count == 2:
+        print(f"Move a disk from rod {rod_a} to rod {rod_b}.")
+        print(f"Move a disk from rod {rod_a} to rod {rod_c}.")
+        print(f"Move a disk from rod {rod_b} to rod {rod_c}.")
         return
-    if disc_count % 2 == 0:
+    else:
         rod_b, rod_c = rod_c, rod_b
         hanoi(disc_count-1, rod_a, rod_b, rod_c)
-    else:
-        hanoi(disc_count-1, rod_a, rod_b, rod_c)
-
+        print(f"Move a disk from rod {rod_a} to rod {rod_b}.")
+        hanoi(disc_count-1, rod_c, rod_a, rod_b)
 
 if __name__ == '__main__':
-    hanoi(4, "A", "B", "C") # A being the starting rod, B the middle rod and C the ending one
+    hanoi(6, "A", "B", "C") # A being the starting rod, B the middle rod and C the ending one
 
 
 """
